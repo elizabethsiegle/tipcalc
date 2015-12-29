@@ -30,7 +30,27 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let defaultTipIndex = TipBar.selectedSegmentIndex
+        
+        defaults.setInteger(defaultTipIndex, forKey: "default_tip_index")
+        
+        defaults.synchronize()
+        
+        print("selected tip at index \(TipBar.selectedSegmentIndex)")
+    }
     
+    override func viewWillAppear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let defaultTipIndex = defaults.integerForKey("default_tip_index")
+        
+        TipBar.selectedSegmentIndex = defaultTipIndex
+        
+
+    }
 
     
     @IBAction func onEditingChanged(sender: AnyObject) {

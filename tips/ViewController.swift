@@ -49,9 +49,8 @@ class ViewController: UIViewController {
         // This is a good place to retrieve the default tip percentage from NSUserDefaults
         // and use it to update the tip amount
         let defaults = NSUserDefaults.standardUserDefaults()
-        let tipValue = defaults.doubleForKey("default_tip_percentage")
-        let doubleTipValue = Double(tipValue)
-        tipControl.selectedSegmentIndex = doubleTipValue
+        let defaultTipIndex = defaults.integerForKey("default_tip_index")
+       tipControl.selectedSegmentIndex = defaultTipIndex
        
             }
 
